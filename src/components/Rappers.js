@@ -1,17 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useAsync } from 'react-use'
 import { RapperTable } from './RapperTable'
 
 const columns = [
-  {
-    Header: `Rapper's Delight`,
-    columns: [
       { Header: 'Name', accessor: 'name' },
-      { Header: 'active', accessor: 'active' },
+      { Header: 'Active', accessor: 'active' },
       { Header: 'Birthday', accessor: 'birthday' },
-      { Header: 'songs', accessor: 'songs' },
-    ],
-  },
+      { Header: 'Songs', accessor: 'songs' },
 ]
 
 export function Rappers() {
