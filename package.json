@@ -5,19 +5,24 @@
   "main": "server.js",
   "license": "MIT",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "start:server": "json-server --watch db.json"
   },
   "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.9.0",
     "express": "^4.17.1",
     "json-server": "^0.16.0",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "react-table": "^7.0.0",
+    "react-use": "^13.27.0",
+    "styled-components": "^5.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.8.3",
     "@babel/preset-env": "^7.8.3",
-    "@babel/preset-react": "^7.8.3",
+    "@babel/preset-react": "^7.9.4",
     "babel-loader": "^8.0.6",
     "css-loader": "^1.0.0",
     "html-webpack-plugin": "^3.2.0",
