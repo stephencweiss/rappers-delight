@@ -16,7 +16,10 @@ module.exports = {
       {
         test: /\.js$/,
         include: path.resolve(__dirname, 'src'),
-        loader: ['babel-loader'],
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-react'],
+          plugins: ['@babel/plugin-transform-runtime'] },
       },
       {
         test: /\.scss$/,
