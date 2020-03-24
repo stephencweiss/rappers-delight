@@ -46,6 +46,7 @@ export function RapperTable({ columns, data }) {
       })
 
       return (
+          <Styles>
         <table {...getTableProps()}>
           <thead>
             {headerGroups.map(headerGroup => (
@@ -69,5 +70,6 @@ export function RapperTable({ columns, data }) {
             })}
           </tbody>
         </table>
+        </Styles>
       )
     }
