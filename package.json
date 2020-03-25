@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node server.js",
-    "start:server": "json-server --watch db.json"
+    "start:json-server": "json-server --watch db.json"
   },
   "dependencies": {
     "@babel/plugin-transform-runtime": "^7.9.0",

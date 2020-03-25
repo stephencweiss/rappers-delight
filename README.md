@@ -21,3 +21,15 @@ You’ve been commissioned to build SupaHotFire: a user interface for keeping re
 This project implements [JSON-server](https://github.com/typicode/json-server). Visit `/api/rappers` to see the REST endpoint for the rappers resource.
 
 All project code should be placed within the `src/` directory. Any code changes within this directory will trigger a rebuild.
+
+
+### Getting Started
+
+Install dependencies:
+- `yarn install`
+
+Start your server:
+- `export PORT=3001 && yarn start`
+
+Start the `JSON-server`:
+- `yarn start:json-server`
