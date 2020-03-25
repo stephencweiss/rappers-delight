@@ -1,12 +1,12 @@
-import React from 'react'
-import { useTable, useFilters } from 'react-table'
+import React, { useEffect } from 'react'
+import { useTable } from 'react-table'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import MaUTable from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
 import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
-
+import { EditableCell } from './EditableCell'
 
 function formatCellValue(cell) {
   let value
@@ -22,31 +22,18 @@ function formatCellValue(cell) {
   return value
 }
 
-function DefaultColumnFilter({ column: { filterValue, preFilteredRows, setFilter } }) {
-  const count = preFilteredRows.length
+const defaultColumn = { Cell: EditableCell }
+export function RapperTable({ columns, data, updateData, setData }) {
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable({
+    columns,
+    data,
+    defaultColumn,
+    updateData,
+  })
 
-  return (
-    <input
-      value={filterValue || ''}
-      onChange={event => setFilter(event.target.value || undefined)}
-      placeholder={`Search ${count} records`}
-    />
-  )
-}
-
-export function RapperTable({ columns, data }) {
-  // Use the state and functions returned from useTable to build your UI
-  const defaultColumn = React.useMemo(() => ({ Filter: DefaultColumnFilter }), [])
-  console.log({ columns, data })
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable(
-    {
-      columns,
-      data,
-      defaultColumn,
-    },
-    useFilters
-  )
-
+  useEffect(() => {
+    setData(data)
+  }, [data])
   return (
     <>
       <CssBaseline />
@@ -55,10 +42,7 @@ export function RapperTable({ columns, data }) {
           {headerGroups.map(headerGroup => (
             <TableRow {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map(column => (
-                <TableCell {...column.getHeaderProps()}>
-                  {column.render('Header')}
-                  <div>{column.canFilter ? column.render('Filter') : null}</div>
-                </TableCell>
+                <TableCell {...column.getHeaderProps()}>{column.render('Header')}</TableCell>
               ))}
             </TableRow>
           ))}
@@ -69,9 +53,7 @@ export function RapperTable({ columns, data }) {
             return (
               <TableRow {...row.getRowProps()}>
                 {row.cells.map(cell => {
-                  cell.column.Header === 'Active' && console.log({ cell })
                   cell.value = formatCellValue(cell)
-
                   return <TableCell {...cell.getCellProps()}>{cell.render('Cell')}</TableCell>
                 })}
               </TableRow>

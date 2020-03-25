@@ -13,6 +13,9 @@ app.use(devMiddleware(compiler))
 app.use(hotMiddleware(compiler))
 
 app.use('/api', jsonServer.router(__dirname + '/db.json'))
+app.put('/api/rappers/:id', (req, res) => {
+  console.log(`hooray`, JSON.stringify(req, null, 4))
+})
 
 const listener = app.listen(process.env.PORT, () => {
   console.log('Your app is listening on port ' + listener.address().port)

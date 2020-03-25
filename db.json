@@ -5,70 +5,110 @@
       "name": "xxxtentacion",
       "active": false,
       "birthday": "1998-01-23T06:00:00.000Z",
-      "songs": ["SAD!", "Jocelyn Flores", "Look at Me!"]
+      "songs": [
+        "SAD!",
+        "Jocelyn Flores",
+        "Look at Me!"
+      ]
     },
     {
       "id": 2,
       "name": "Lil Peep",
       "active": false,
       "birthday": "1996-11-01T06:00:00.000Z",
-      "songs": ["Star Shopping", "Awful Things", "Crybaby"]
+      "songs": [
+        "Star Shopping",
+        "Awful Things",
+        "Crybaby"
+      ]
     },
     {
       "id": 3,
       "name": "21 Savage",
       "active": true,
       "birthday": "1992-10-22T05:00:00.000Z",
-      "songs": ["Bank Account", "No Heart", "X"]
+      "songs": [
+        "Bank Account",
+        "No Heart",
+        "X"
+      ]
     },
     {
       "id": 4,
       "name": "Post Malone",
       "active": true,
       "birthday": "1995-07-04T05:00:00.000Z",
-      "songs": ["Rockstar", "Congratulations", "Psycho"]
+      "songs": [
+        "Rockstar",
+        "Congratulations",
+        "Psycho"
+      ]
     },
     {
       "id": 5,
-      "name": "Travis Scott",
-      "active": true,
+      "name": "Scott Travis",
+      "active": "true",
       "birthday": "1992-04-30T05:00:00.000Z",
-      "songs": ["Goosebumps", "SICKO MODE", "STARGAZING"]
+      "songs": [
+        "Goosebumps",
+        "SICKO MODE",
+        "STARGAZING"
+      ]
     },
     {
       "id": 6,
       "name": "Sheck Wes",
       "active": true,
       "birthday": "1998-09-10T05:00:00.000Z",
-      "songs": ["Mo Bamba", "Live SheckWes Die SheckWes", "Chippi Chippi"]
+      "songs": [
+        "Mo Bamba",
+        "Live SheckWes Die SheckWes",
+        "Chippi Chippi"
+      ]
     },
     {
       "id": 7,
       "name": "Wiz Khalifa",
       "active": true,
       "birthday": "1987-09-08T05:00:00.000Z",
-      "songs": ["See You Again", "Black and Yellow", "Hopeless Romantic"]
+      "songs": [
+        "See You Again",
+        "Black and Yellow",
+        "Hopeless Romantic"
+      ]
     },
     {
       "id": 8,
       "name": "Drake",
       "active": true,
       "birthday": "1986-10-24T05:00:00.000Z",
-      "songs": ["In My Feelings", "God's Plan", "I'm Upset"]
+      "songs": [
+        "In My Feelings",
+        "God's Plan",
+        "I'm Upset"
+      ]
     },
     {
       "id": 9,
       "name": "Busta Rhymes",
       "active": false,
       "birthday": "1972-05-20T05:00:00.000Z",
-      "songs": ["Break Ya Neck", "I Know What You Want", "Touch It"]
+      "songs": [
+        "Break Ya Neck",
+        "I Know What You Want",
+        "Touch It"
+      ]
     },
     {
       "id": 10,
       "name": "Aesop Rock",
       "active": true,
       "birthday": "1976-06-05T05:00:00.000Z",
-      "songs": ["Dorks", "Zero Dark Thirty", "Shrunk"]
+      "songs": [
+        "Dorks",
+        "Zero Dark Thirty",
+        "Shrunk"
+      ]
     }
   ]
 }
