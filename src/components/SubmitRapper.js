@@ -6,14 +6,21 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  margin: .5rem;
+  margin: 0.5rem 4rem;
 `
 
 const Label = styled.label`
-  padding: .5rem 0;
+  padding: 0.5rem 0;
 `
 const Title = styled.span`
   padding-right: 0.25rem;
+`
+
+const Submit = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 `
 
 export function SubmitRapper() {
@@ -36,8 +43,8 @@ export function SubmitRapper() {
   return (
     <>
       <Form ref={formRef} onSubmit={handleSubmit(onSubmit)}>
-        <Label >
-          <Title >Name </Title>
+        <Label>
+          <Title>Name </Title>
           <input
             name="name"
             title="The rapper's moniker"
@@ -47,16 +54,16 @@ export function SubmitRapper() {
             })}
           />
         </Label>
-        <Label >
-          <Title >Birth date</Title>
+        <Label>
+          <Title>Birth date</Title>
           <input type="date" ref={register} name="birthday" />
         </Label>
-        <Label >
-          <Title >Active?</Title>
+        <Label>
+          <Title>Active?</Title>
           <input type="checkbox" ref={register} name="active" />
         </Label>
-        <Label >
-          <Title >Popular songs</Title>
+        <Label>
+          <Title>Popular songs</Title>
           <input
             style={{ minWidth: '400px' }}
             name="songs"
@@ -64,7 +71,9 @@ export function SubmitRapper() {
             placeholder="Songs, comma separated"
           />
         </Label>
-        <input type="submit" />
+        <Submit>
+          <input type="submit" />
+        </Submit>
       </Form>
     </>
   )
