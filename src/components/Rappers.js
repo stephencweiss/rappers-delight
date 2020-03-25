@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useReducer, useEffect } from 'react'
 import { useAsync } from 'react-use'
 import { RapperTable } from './RapperTable'
 import { SubmitRapper } from './SubmitRapper'
-// import { updateData } from './EditableCell'
+
 const columns = [
   { Header: 'Name', accessor: 'name' },
   { Header: 'Active', accessor: 'active' },
@@ -10,52 +10,56 @@ const columns = [
   { Header: 'Songs', accessor: 'songs' },
 ]
 
-export function Rappers() {
-  const [data, setData] = useState()
-  const rappers = useAsync(async () => await fetch('/api/rappers').then(res => res.json()), [])
+const reducer = (state, action) => {
+  console.log({ state, action })
+  switch (action.TYPE) {
+    case 'LOAD':
+      console.log(`loading!`, { action })
+      return action.PAYLOAD
 
-  const updateData = (rowIndex, columnId, value) => {
-    setData(data =>
-      data.map((row, index) => {
+    case 'UPDATE':
+      const { rowIndex, columnId, value } = action.PAYLOAD
+      return state.map((row, index) => {
+        console.log({ row, index, action })
         if (index === rowIndex) {
-          console.log(data[rowIndex])
-          return {
-            ...data[rowIndex],
-            [columnId]: value,
+          const newValue = columnId === 'songs' ? value.split(', ') : value
+
+          const newRowValue = {
+            ...row,
+            [columnId]: newValue,
           }
+          fetch(`/api/rappers/${newRowValue.id}`, {
+            method: 'PATCH',
+            headers: {
+              'content-type': 'application/json',
+            },
+            body: JSON.stringify(newRowValue),
+          })
+
+          return newRowValue
         }
         return row
       })
-    )
-    fetch(`/api/rappers/${data[rowIndex].id}`, {
-      method: 'PATCH',
-      headers: {
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify(data[rowIndex]),
-    })
   }
+}
+const initialState = []
+export function Rappers() {
+  const [state, dispatch] = useReducer(reducer, initialState)
+  const rappers = useAsync(async () => await fetch('/api/rappers').then(res => res.json()), [])
+
+  useEffect(() => {
+    dispatch({ TYPE: 'LOAD', PAYLOAD: rappers.value })
+  }, [rappers.value])
 
   return (
     <>
       {rappers.loading ? (
         <div>Loading...</div> // replace with a loader
-      ) : rappers.value ? (
-        <RapperTable
-          columns={columns}
-          data={data || rappers.value}
-          updateData={updateData}
-          setData={setData}
-        />
+      ) : state ? (
+        <RapperTable columns={columns} data={state} updateData={dispatch} setData={dispatch} />
       ) : (
-        <div>
-          Error!
-          <pre>
-            <code>{JSON.stringify(rappers.error, null, 4)}</code>
-          </pre>
-        </div>
-      ) // replace with a true error handler}
-      }
+        <div>Error! Please try again! </div>
+      )}
       <SubmitRapper />
     </>
   )

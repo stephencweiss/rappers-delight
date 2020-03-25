@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useTable } from 'react-table'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import MaUTable from '@material-ui/core/Table'
@@ -31,9 +31,6 @@ export function RapperTable({ columns, data, updateData, setData }) {
     updateData,
   })
 
-  useEffect(() => {
-    setData(data)
-  }, [data])
   return (
     <>
       <CssBaseline />

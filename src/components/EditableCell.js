@@ -10,7 +10,9 @@ export function EditableCell({
   const handleChange = event => {
     setValue(event.target.value)
   }
-  const handleBlur = () => updateData(index, id, value)
+  const handleBlur = () =>
+    updateData({ PAYLOAD: { rowIndex: index, columnId: id, value }, TYPE: 'UPDATE' })
+
   useEffect(() => {
     setValue(initialValue)
   }, [initialValue])
